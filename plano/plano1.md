@@ -1003,10 +1003,10 @@ public_html/clientes/dr-ernani/public/dist
 ### 11.1 — Diagnóstico do problema atual
 O WhatsApp é rigoroso com imagens de Open Graph (`og:image`). O preview falha se:
 1. O formato for `WebP` (o que acontece quando usamos o parâmetro `f_auto` do Cloudinary globalmente).
-2. O formato da imagem fugir do padrão retangular de `1200x630` px exigido.
+2. O formato da imagem fugir do padrão retangular de `1200x630` px ou formato Quadrado `800x800`.
 3. O peso da imagem for muito grande.
 
-A solução é atualizar as tags do Open Graph (`index.html`) para usar a URL da foto oficial do **Hero**, mas instruindo o Cloudinary pela própria URL a recortar perfeitamente para `1200x630` e forçar a extensão `.jpg`.
+A solução é atualizar as tags do Open Graph (`index.html`) para usar a foto **Retrato (com fundo azul)** do Doutor. Nós vamos instruir o Cloudinary, através do próprio link, a transformar essa imagem em um quadrado perfeito `800x800` (focado no rosto) e **forçando a extensão `.jpg`**. Formato quadrado se adapta perfeitamente como miniatura lateral no WhatsApp.
 
 ### 11.2 — Atualizar as tags no `index.html`
 
@@ -1020,19 +1020,19 @@ No arquivo `index.html`, devemos alterar todas as tags de Open Graph e Twitter a
   <meta property="og:title" content="Dr. Ernani Castro | Cirurgião Plástico no Maranhão" />
   <meta property="og:description" content="Pioneirismo e Precisão em Cirurgia Plástica no Maranhão. Especialista em Flancoplastia, Mamoplastia Short Scar e Contorno Corporal de Alta Definição." />
   
-  <!-- IMAGEM OG OTIMIZADA PARA WHATSAPP: Forçar JPG, centralizada, exatamente 1200x630px -->
-  <meta property="og:image" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_center,w_1200,h_630,f_jpg,q_80/v1775529343/DR_ERNANI_-_IMAGEM_HERO_cvuxml.jpg" />
-  <meta property="og:image:secure_url" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_center,w_1200,h_630,f_jpg,q_80/v1775529343/DR_ERNANI_-_IMAGEM_HERO_cvuxml.jpg" />
+  <!-- IMAGEM OG OTIMIZADA PARA WHATSAPP: Foto do Doutor Quadrada (Forçar JPG, foco no rosto, exatamente 800x800px) -->
+  <meta property="og:image" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_face,w_800,h_800,f_jpg,q_80/v1775514728/SaveClip.App_564127220_17969272046956689_4936779480211259928_n_x4nq2h.jpg" />
+  <meta property="og:image:secure_url" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_face,w_800,h_800,f_jpg,q_80/v1775514728/SaveClip.App_564127220_17969272046956689_4936779480211259928_n_x4nq2h.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
   <meta property="og:site_name" content="Dr. Ernani Castro" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Dr. Ernani Castro | Cirurgião Plástico no Maranhão" />
   <meta name="twitter:description" content="Pioneirismo e Precisão em Cirurgia Plástica no Maranhão. Especialista em Flancoplastia, Mamoplastia Short Scar e Contorno Corporal." />
-  <meta name="twitter:image" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_center,w_1200,h_630,f_jpg,q_80/v1775529343/DR_ERNANI_-_IMAGEM_HERO_cvuxml.jpg" />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_face,w_800,h_800,f_jpg,q_80/v1775514728/SaveClip.App_564127220_17969272046956689_4936779480211259928_n_x4nq2h.jpg" />
 ```
 
 ### 11.3 — Drible no Cache do WhatsApp (CRÍTICO)
