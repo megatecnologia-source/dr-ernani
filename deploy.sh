@@ -35,7 +35,9 @@ git commit -m "$MSG"
 
 echo -e "${BLUE}🚀 [4/5] Enviando para GitHub...${NC}"
 git remote add origin https://github.com/megatecnologia-source/dr-ernani.git
-git push -f origin HEAD:production
+git fetch origin production 2>/dev/null || true
+git checkout -B production
+git push -f origin production
 
 echo -e "${BLUE}🧹 [5/5] Limpando arquivos temporários...${NC}"
 cd ..
