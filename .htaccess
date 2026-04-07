@@ -1,0 +1,125 @@
+# ============================================
+# .htaccess — Dr. Ernani Castro
+# Segurança e configuração para SPA React
+# ============================================
+
+# ------------------------------------------
+# 1. FORÇAR HTTPS
+# ------------------------------------------
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ------------------------------------------
+# 2. ROTEAMENTO SPA (React Router / History API)
+# Redireciona todas as rotas para index.html
+# ------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
+
+# ------------------------------------------
+# 3. HEADERS DE SEGURANÇA
+# ------------------------------------------
+
+# Prevenir Clickjacking
+Header always set X-Frame-Options "SAMEORIGIN"
+
+# Prevenir MIME Type Sniffing
+Header always set X-Content-Type-Options "nosniff"
+
+# Ativar proteção XSS no navegador
+Header always set X-XSS-Protection "1; mode=block"
+
+# Política de Referrer
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Política de Permissões (bloquear acesso a câmera, microfone, geolocation, etc.)
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+# Content Security Policy (CSP)
+# Permite: fontes do Google, imagens do Cloudinary e Unsplash, scripts inline do Vite
+Header always set Content-Security-Policy "\
+  default-src 'self'; \
+  script-src 'self' 'unsafe-inline'; \
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+  font-src 'self' https://fonts.gstatic.com; \
+  img-src 'self' data: https://res.cloudinary.com https://images.unsplash.com; \
+  connect-src 'self'; \
+  frame-ancestors 'self'; \
+  base-uri 'self'; \
+  form-action 'self'; \
+"
+
+# Strict Transport Security (HSTS) — Forçar HTTPS por 1 ano
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+# ------------------------------------------
+# 4. BLOQUEAR ACESSO A ARQUIVOS SENSÍVEIS
+# ------------------------------------------
+
+# Bloquear arquivos ocultos (ex: .env, .git, .htaccess)
+<FilesMatch "^\.">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Bloquear acesso a arquivos de configuração
+<FilesMatch "\.(json|lock|md|yml|yaml|toml|ts|tsx|log|sql|bak|config)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ------------------------------------------
+# 5. DESABILITAR LISTAGEM DE DIRETÓRIOS
+# ------------------------------------------
+Options -Indexes
+
+# ------------------------------------------
+# 6. CACHE DE ASSETS ESTÁTICOS
+# ------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Imagens — Cache de 1 ano (Vite adiciona hash no nome)
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # CSS e JS — Cache de 1 ano (Vite adiciona hash no nome)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Fontes — Cache de 1 ano
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+
+  # HTML — Sem cache longo (sempre buscar a versão mais recente)
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ------------------------------------------
+# 7. COMPRESSÃO GZIP
+# ------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
+</IfModule>
