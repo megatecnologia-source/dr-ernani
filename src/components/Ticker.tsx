@@ -17,7 +17,7 @@ export default function Ticker() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="flex gap-12 items-center"
+        className="flex gap-12 items-center will-change-transform"
       >
         {[...terms, ...terms, ...terms].map((term, i) => (
           <span

@@ -24,10 +24,11 @@ export default function Footer() {
         >
           <div className="text-center md:text-left">
             <img
-              src="https://res.cloudinary.com/dplhygs4v/image/upload/v1775514728/LOGO-ERNANI-CASTRO-300x84_mzunbm.png"
+              src="https://res.cloudinary.com/dplhygs4v/image/upload/f_auto,q_auto,w_300/v1775514728/LOGO-ERNANI-CASTRO-300x84_mzunbm.png"
               alt="Dr. Ernani Castro Logo"
               className="h-10 w-auto object-contain mb-4 mx-auto md:mx-0"
               referrerPolicy="no-referrer"
+              loading="lazy"
             />
             <p className="text-snow-white/40 text-sm">Cirurgia Plástica de Alta Performance</p>
           </div>
@@ -37,7 +38,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Dr. Ernani Castro. Todos os direitos reservados.
             </p>
             <p className="text-xs text-snow-white/60">
-              Criação de site profissional por <span className="text-cyan-tech font-bold">Bydo Marketing</span> e <span className="text-cyan-tech font-bold">Mega Tecnologia</span>
+              Criação de site profissional por <a href="https://bydomarketing.com.br" target="_blank" rel="noopener noreferrer" className="text-cyan-tech font-bold hover:underline">Bydo Marketing</a> e <span className="text-cyan-tech font-bold">Mega Tecnologia</span>
             </p>
           </div>
         </motion.div>

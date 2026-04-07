@@ -29,10 +29,11 @@ export default function About() {
           >
             <div className="relative z-10 rounded-3xl overflow-hidden border-8 border-gray-100 shadow-2xl">
               <img
-                src="https://res.cloudinary.com/dplhygs4v/image/upload/v1775514728/SaveClip.App_564127220_17969272046956689_4936779480211259928_n_x4nq2h.webp"
+                src="https://res.cloudinary.com/dplhygs4v/image/upload/f_auto,q_auto,w_800/v1775514728/SaveClip.App_564127220_17969272046956689_4936779480211259928_n_x4nq2h.webp"
                 alt="Dr. Ernani Castro"
                 className="w-full aspect-[4/5] object-cover"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
             </div>
           </motion.div>

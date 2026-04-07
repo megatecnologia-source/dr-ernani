@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center">
           <img
-            src="https://res.cloudinary.com/dplhygs4v/image/upload/v1775514728/LOGO-ERNANI-CASTRO-300x84_mzunbm.png"
+            src="https://res.cloudinary.com/dplhygs4v/image/upload/f_auto,q_auto,w_300/v1775514728/LOGO-ERNANI-CASTRO-300x84_mzunbm.png"
             alt="Dr. Ernani Castro Logo"
             className="h-8 md:h-10 lg:h-12 w-auto object-contain"
             referrerPolicy="no-referrer"

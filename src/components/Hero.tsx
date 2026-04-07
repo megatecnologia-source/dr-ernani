@@ -8,7 +8,7 @@ export default function Hero() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-[center_right] md:bg-right"
         style={{ 
-          backgroundImage: `url('https://res.cloudinary.com/dplhygs4v/image/upload/v1775529343/DR_ERNANI_-_IMAGEM_HERO_cvuxml.png')`,
+          backgroundImage: `url('https://res.cloudinary.com/dplhygs4v/image/upload/f_auto,q_auto,w_1920/v1775529343/DR_ERNANI_-_IMAGEM_HERO_cvuxml.png')`,
         }}
       />
 

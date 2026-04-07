@@ -1,15 +1,17 @@
+import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Ticker from "./components/Ticker";
-import Specialties from "./components/Specialties";
-import ForWhom from "./components/ForWhom";
-import About from "./components/About";
-import Results from "./components/Results";
-import Locations from "./components/Locations";
-import ResultsGallery from "./components/ResultsGallery";
-import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
-import FloatingActions from "./components/FloatingActions";
+
+const Specialties = lazy(() => import("./components/Specialties"));
+const ForWhom = lazy(() => import("./components/ForWhom"));
+const About = lazy(() => import("./components/About"));
+const Results = lazy(() => import("./components/Results"));
+const Locations = lazy(() => import("./components/Locations"));
+const ResultsGallery = lazy(() => import("./components/ResultsGallery"));
+const FAQ = lazy(() => import("./components/FAQ"));
+const Footer = lazy(() => import("./components/Footer"));
+const FloatingActions = lazy(() => import("./components/FloatingActions"));
 
 export default function App() {
   return (
@@ -17,15 +19,17 @@ export default function App() {
       <Navbar />
       <Hero />
       <Ticker />
-      <Specialties />
-      <ForWhom />
-      <About />
-      <Results />
-      <Locations />
-      <ResultsGallery />
-      <FAQ />
-      <Footer />
-      <FloatingActions />
+      <Suspense fallback={null}>
+        <Specialties />
+        <ForWhom />
+        <About />
+        <Results />
+        <Locations />
+        <ResultsGallery />
+        <FAQ />
+        <Footer />
+        <FloatingActions />
+      </Suspense>
     </div>
   );
 }

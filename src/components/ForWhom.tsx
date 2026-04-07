@@ -45,10 +45,11 @@ export default function ForWhom() {
             <div className="relative z-10">
               <div className="w-full max-w-[500px] mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-white/5">
                 <img
-                  src="https://res.cloudinary.com/dplhygs4v/image/upload/v1775514728/SaveClip.App_654019156_18086431382211751_3033090636564330698_n_ag180s.jpg"
+                  src="https://res.cloudinary.com/dplhygs4v/image/upload/f_auto,q_auto,w_800/v1775514728/SaveClip.App_654019156_18086431382211751_3033090636564330698_n_ag180s.jpg"
                   alt="Transformação"
                   className="w-full h-auto block"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </div>
             </div>

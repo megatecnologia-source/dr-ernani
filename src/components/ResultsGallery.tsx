@@ -52,6 +52,7 @@ const BeforeAfterSlider = ({ before, after, title, caption }: BeforeAfterSliderP
           alt="Depois"
           className="absolute inset-0 w-full h-full object-cover"
           referrerPolicy="no-referrer"
+          loading="lazy"
         />
 
         {/* Before Image (Clipped) */}
@@ -64,6 +65,7 @@ const BeforeAfterSlider = ({ before, after, title, caption }: BeforeAfterSliderP
             alt="Antes"
             className="absolute inset-0 w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            loading="lazy"
           />
         </div>
 
@@ -106,38 +108,38 @@ const results = [
   {
     title: "Flancoplastia & Contorno",
     caption: "Redefinição da silhueta e cintura.",
-    before: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=800",
-    after: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=800"
+    before: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=70&w=600",
+    after: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=70&w=600"
   },
   {
     title: "Mamoplastia Short Scar",
     caption: "Simetria e projeção com cicatriz reduzida.",
-    before: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=800",
-    after: "https://images.unsplash.com/photo-1588776814546-1ffce47267a5?auto=format&fit=crop&q=80&w=800"
+    before: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=70&w=600",
+    after: "https://images.unsplash.com/photo-1588776814546-1ffce47267a5?auto=format&fit=crop&q=70&w=600"
   },
   {
     title: "Lipoaspiração HD",
     caption: "Definição muscular e abdômen atlético.",
-    before: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=800",
-    after: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800"
+    before: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=70&w=600",
+    after: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=70&w=600"
   },
   {
     title: "Contorno Corporal",
     caption: "Harmonia entre cintura e glúteos.",
-    before: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80&w=800",
-    after: "https://images.unsplash.com/photo-1515377666659-81735e0ff041?auto=format&fit=crop&q=80&w=800"
+    before: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=70&w=600",
+    after: "https://images.unsplash.com/photo-1515377666659-81735e0ff041?auto=format&fit=crop&q=70&w=600"
   },
   {
     title: "Mastopexia",
     caption: "Elevação e rejuvenescimento do colo.",
-    before: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800",
-    after: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800"
+    before: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=70&w=600",
+    after: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=70&w=600"
   },
   {
     title: "Definição Abdominal",
     caption: "Lipo HD com foco em relevos naturais.",
-    before: "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?auto=format&fit=crop&q=80&w=800",
-    after: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800"
+    before: "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?auto=format&fit=crop&q=70&w=600",
+    after: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=70&w=600"
   }
 ];
 
