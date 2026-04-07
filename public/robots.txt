@@ -1,0 +1,5 @@
+# robots.txt — Dr. Ernani Castro
+User-agent: *
+Allow: /
+
+Sitemap: https://dr-ernani.bydomarketing.com.br/sitemap.xml

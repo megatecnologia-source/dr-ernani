@@ -1,0 +1,36 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+
+# Ambientes e segredos
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Manter o .env.example se existir
+!.env.example
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Coverage e testes
+coverage/
+
+# Cache
+.cache/
+.parcel-cache/

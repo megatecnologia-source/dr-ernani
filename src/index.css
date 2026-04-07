@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
+
+  --color-navy-deep: #0A1A2F;
+  --color-navy-light: #0A1A2F;
+  --color-royal-classic: #1E3A8A;
+  --color-cyan-tech: #00E5FF;
+  --color-snow-white: #F8FAFC;
+  --color-wine-elegance: #721C24;
+  --color-accent-blue: #3B82F6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-[#0A1A2F] text-[#F8FAFC] font-sans antialiased;
+    overflow-x: hidden;
+    width: 100%;
+  }
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+}
+
+.bg-gradient-button {
+  background: linear-gradient(90deg, #1E3A8A 0%, #7C3AED 100%);
+}
+
+.section-padding {
+  @apply py-24 md:py-32;
+}
