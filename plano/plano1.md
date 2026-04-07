@@ -996,6 +996,57 @@ public_html/clientes/dr-ernani/public/dist
 
 ---
 
+## Fase 11 — Correção do Preview no WhatsApp (Open Graph)
+
+**Objetivo:** Garantir que o link do site gere o "rich preview" (imagem, título e descrição) no WhatsApp.
+
+### 11.1 — Diagnóstico do problema atual
+O WhatsApp é rigoroso com imagens de Open Graph (`og:image`). O preview falha se:
+1. O formato for `WebP` (o que acontece quando usamos o parâmetro `f_auto` do Cloudinary globalmente).
+2. O formato da imagem fugir do padrão retangular de `1200x630` px exigido.
+3. O peso da imagem for muito grande.
+
+A solução é atualizar as tags do Open Graph (`index.html`) para usar a URL da foto oficial do **Hero**, mas instruindo o Cloudinary pela própria URL a recortar perfeitamente para `1200x630` e forçar a extensão `.jpg`.
+
+### 11.2 — Atualizar as tags no `index.html`
+
+No arquivo `index.html`, devemos alterar todas as tags de Open Graph e Twitter atuais para estas:
+
+```html
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:url" content="https://dr-ernani.bydomarketing.com.br/" />
+  <meta property="og:title" content="Dr. Ernani Castro | Cirurgião Plástico no Maranhão" />
+  <meta property="og:description" content="Pioneirismo e Precisão em Cirurgia Plástica no Maranhão. Especialista em Flancoplastia, Mamoplastia Short Scar e Contorno Corporal de Alta Definição." />
+  
+  <!-- IMAGEM OG OTIMIZADA PARA WHATSAPP: Forçar JPG, centralizada, exatamente 1200x630px -->
+  <meta property="og:image" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_center,w_1200,h_630,f_jpg,q_80/v1775529343/DR_ERNANI_-_IMAGEM_HERO_cvuxml.jpg" />
+  <meta property="og:image:secure_url" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_center,w_1200,h_630,f_jpg,q_80/v1775529343/DR_ERNANI_-_IMAGEM_HERO_cvuxml.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Dr. Ernani Castro" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dr. Ernani Castro | Cirurgião Plástico no Maranhão" />
+  <meta name="twitter:description" content="Pioneirismo e Precisão em Cirurgia Plástica no Maranhão. Especialista em Flancoplastia, Mamoplastia Short Scar e Contorno Corporal." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dplhygs4v/image/upload/c_fill,g_center,w_1200,h_630,f_jpg,q_80/v1775529343/DR_ERNANI_-_IMAGEM_HERO_cvuxml.jpg" />
+```
+
+### 11.3 — Drible no Cache do WhatsApp (CRÍTICO)
+
+O WhatsApp armazena em cache (memória) o preview que não funcionou. Por horas/dias, ele simplesmente lembrará que o link "dr-ernani.bydomarketing..." é estático.
+Para testar **IMEDIATAMENTE** o preview após subir as alterações via git:
+
+**Envie o link acompanhado de um parâmetro imaginário no final, assim:**
+`https://dr-ernani.bydomarketing.com.br/?v=1`
+
+Isso forçará a central do WhatsApp a ignorar o cache local, ler o link "novo" (que leva para a mesma index HTML) e extrair do seu HTML essa nova tag de foto gerada pelo Cloudinary. Assim que você perceber e visualizar que funcionou a bolha com miniatura, o próprio link original (sem v=1) possivelmente voltará a ter cache limpo pra novas pessoas e tudo estará validado.
+
+---
+
 ## 📝 Resumo das Alterações por Arquivo
 
 | Arquivo | Ação | Descrição |
